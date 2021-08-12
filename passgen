@@ -1,0 +1,34 @@
+#Генератор паролей
+
+import random
+
+digits = '0123456789'
+lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+punctuation = '!#$%&*+-=?@^_'
+chars = ''
+
+def generate_password(len_pw, chars):
+    password = ''
+    for j in range(len_pw):
+        password += random.choice(chars)
+    return password
+
+count_pws = int(input('Количество паролей для генерации? '))
+len_pw = int(input('Длина одного пароля? '))
+dig = input('Включать ли цифры? ')
+ucl = input('Включать ли прописные буквы? ')
+lcl = input('Включать ли строчные буквы? ')
+pcn = input('Включать ли символы? ')
+
+if dig.lower() == 'да':
+    chars = chars + digits
+if ucl.lower() == 'да':
+    chars = chars + uppercase_letters
+if lcl.lower() == 'да':
+    chars = chars + lowercase_letters
+if pcn.lower() == 'да':
+    chars = chars + punctuation
+
+for i in range(count_pws):
+    print('Ваш пароль:', generate_password(len_pw, chars))
